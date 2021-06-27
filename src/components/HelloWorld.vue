@@ -29,6 +29,7 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
+    <div class="test">test</div>
   </div>
 </template>
 
@@ -56,5 +57,12 @@ li {
 }
 a {
   color: #42b983;
+}
+.test {
+  font-size: 60px;
+  width: 327px;
+  height: 86px;
+  margin: 0 auto;
+  border: #42b983 1px solid;
 }
 </style>
