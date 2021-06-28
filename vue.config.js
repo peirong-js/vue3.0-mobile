@@ -12,6 +12,10 @@ module.exports = {
           //   rootValue: 37.5,
           //   propList: ['*']
           // })
+          // require('postcss-plugin-px2rem')({
+          //   rootValue: 37.5,
+          //   minPixelValue: 3
+          // })
           require('postcss-px-to-viewport')({
             viewportWidth: 375,
             unitPrecision: 5,

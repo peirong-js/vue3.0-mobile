@@ -1,7 +1,8 @@
 <template>
   <div class="about">
     <h1>This is an about page</h1>
-    <Button type="primary">按钮</Button>
+    <Button type="danger">按钮</Button>
+    <van-button type="danger">按钮</van-button>
     <Rate v-model="value" />
   </div>
 </template>
