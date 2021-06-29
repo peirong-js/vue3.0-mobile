@@ -11,7 +11,7 @@
 
 import { Button, Rate } from 'vant'
 
-import { ref } from 'vue'
+import { ref, onMounted, onBeforeUnmount, onBeforeUpdate, onUpdated } from 'vue'
 export default {
   components: {
     Button,
@@ -19,6 +19,18 @@ export default {
   },
   setup () {
     const value = ref(3)
+    onMounted(() => {
+      console.log('onMounted')
+    })
+    onBeforeUnmount(() => {
+      console.log('onBeforeUnmount')
+    })
+    onBeforeUpdate(() => {
+      console.log('onBeforeUnmount')
+    })
+    onUpdated(() => {
+      console.log('onUpdated')
+    })
     return { value }
   }
 }
