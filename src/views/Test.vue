@@ -1,9 +1,9 @@
 <template>
   <div class="about">
     <h1>This is an about page</h1>
-    <Button type="danger">按钮</Button>
-    <van-button type="danger">按钮</van-button>
+    <Button type="danger" @click="changeName">按钮</Button>
     <Rate v-model="value" />
+    vuex: {{name}}
   </div>
 </template>
 
@@ -11,7 +11,8 @@
 
 import { Button, Rate } from 'vant'
 
-import { ref, onMounted, onBeforeUnmount, onBeforeUpdate, onUpdated } from 'vue'
+import { ref, toRefs, onMounted, onBeforeUnmount, onBeforeUpdate, onUpdated } from 'vue'
+import { useStore } from 'vuex'
 export default {
   components: {
     Button,
@@ -31,7 +32,12 @@ export default {
     onUpdated(() => {
       console.log('onUpdated')
     })
-    return { value }
+    const store = useStore()
+    const { name } = toRefs(store.state)
+    const changeName = () => {
+      store.dispatch('changeName', 'test')
+    }
+    return { value, name, changeName }
   }
 }
 </script>
