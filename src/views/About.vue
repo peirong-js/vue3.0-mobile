@@ -5,7 +5,7 @@
     <Rate v-model="value" />
     vuex: {{name}}
 
-<van-field
+<Field
   v-model="state.fieldValue"
   is-link
   readonly
@@ -13,7 +13,7 @@
   placeholder="请选择所在地区"
   @click="state.show = true"
 />
-<van-popup v-model:show="state.show" round position="bottom">
+<Popup v-model:show="state.show" round position="bottom">
   <Cascader
     v-model="state.cascaderValue"
     title="请选择所在地区"
@@ -21,20 +21,22 @@
     @close="state.show = false"
     @finish="onFinish"
   />
-</van-popup>
+</Popup>
   </div>
 </template>
 
 <script>
 
-import { Button, Rate, Cascader } from 'vant'
+import { Button, Rate, Cascader, Popup, Field } from 'vant'
 import { useStore } from 'vuex'
 import { ref, toRefs, reactive } from 'vue'
 export default {
   components: {
     Button,
     Rate,
-    Cascader
+    Cascader,
+    Field,
+    Popup
   },
   setup () {
     const value = ref(3)
@@ -57,15 +59,16 @@ export default {
         children: [{ text: '杭州市', value: '330100' }]
       },
       {
-        text: '江苏省',
+        text: '广东省',
         value: '320000',
-        children: [{ text: '南京市', value: '320100' }]
+        children: [{ text: '东莞市', value: '320100' }]
       }
     ]
     // 全部选项选择完毕后，会触发 finish 事件
     const onFinish = ({ selectedOptions }) => {
       state.show = false
       state.fieldValue = selectedOptions.map((option) => option.text).join('/')
+      console.log('state', state.cascaderValue)
     }
     return {
       value,
